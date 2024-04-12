@@ -55,8 +55,7 @@ def submit_form():
     date = request.form['date']
     address = request.form['address']
     # здесь вы можете сохранить данные или отправить их по электронной почте
-    return render_template('form_result.html', 
-                           #Помести переменные
+    return render_template('form_result.html',
                            name=name, email=email, date=date, address=address
                            )
 
