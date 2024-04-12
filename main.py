@@ -1,5 +1,5 @@
 #Импорт
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
@@ -15,12 +15,11 @@ def result_calculate(size, lights, device):
 @app.route('/')
 def index():
     return render_template('index.html')
-
 #Вторая страница
 @app.route('/<size>')
 def lights(size):
     return render_template(
-                            'lights.html',
+                            'lights.html', 
                             size=size
                            )
 
@@ -28,9 +27,9 @@ def lights(size):
 @app.route('/<size>/<lights>')
 def electronics(size, lights):
     return render_template(
-                            'electronics.html',
-                            size = size,
-                            lights = lights
+                            'electronics.html',                           
+                            size = size, 
+                            lights = lights                           
                            )
 
 #Расчет
@@ -42,4 +41,23 @@ def end(size, lights, device):
                                                     int(device)
                                                     )
                         )
+#Форма
+@app.route('/form')
+def form():
+    return render_template('form.html')
+
+#Результаты формы
+@app.route('/submit', methods=['POST'])
+def submit_form():
+    #Создай переменные для сбора информации
+    name = request.form['name']
+    email = request.form['email']
+    date = request.form['date']
+    address = request.form['address']
+    # здесь вы можете сохранить данные или отправить их по электронной почте
+    return render_template('form_result.html', 
+                           #Помести переменные
+                           name=name, email=email, date=date, address=address
+                           )
+
 app.run(debug=True, port=1290)
