@@ -1,21 +1,33 @@
-<!-- Создай страницу для вывода информации пользователя -->
+<!-- Форма завершена! Почта, Имя, Адресс, Дата>
+<!-->
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  >
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../static/css/style.css">
+  <title>Форма заполнена</title>
 </head>
+
 <body>
-{% block content %}
-<h1>Форма заполнена!</h1>
-<p>
-    {{name}}
-    {{email}}
-    {{address}}
-    {{date}}
-</p>
+  <header class="header">
+    <div class="header__text">
+      <h1>Расчитай энергоэффективность своего дома!</h1>
+      <p>Реши проблему излишнего электропотребления самостоятельно!</p>
+    </div>
+  </header>
+  <main>
+    {% block content %}
+    <h1 style="margin-bottom: 20pt">Форма заполнена!</h1>
+    <p>{{name}}</p>
+    <p>{{email}}</p>
+    <p>{{address}}</p>
+    <p>{{date}}</p>
+    {% endblock %}
+      </main>
 </body>
 </html>
