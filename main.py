@@ -1,5 +1,6 @@
 #Импорт
 from flask import Flask, render_template, request
+import datetime
 
 
 app = Flask(__name__)
@@ -54,6 +55,17 @@ def submit_form():
     email = request.form['email']
     date = request.form['date']
     address = request.form['address']
+
+    # Значения переменных в file.txt.
+    d = datetime.datetime.now()
+    with open('file.txt', 'a') as f:
+        f.write(f'{d} Form results: ')
+        f.write(name + '/')
+        f.write(email + '/')
+        f.write(date + '/')
+        f.write(address + '/' + '''
+        ''')
+
     # здесь вы можете сохранить данные или отправить их по электронной почте
     return render_template('form_result.html',
                            name=name, email=email, date=date, address=address
